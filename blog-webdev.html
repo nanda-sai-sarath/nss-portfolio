@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Modern Web Development Guide — Nanda Sai Sarath</title>
+  <meta name="description" content="Practical guide to web development: front-end, back-end, tooling, deployment and my approach to learning and projects." />
+  <link rel="stylesheet" href="../styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <span class="logo-text">NSS</span>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="index.html#home" class="nav-link">Home</a></li>
+        <li><a href="index.html#about" class="nav-link">About</a></li>
+        <li><a href="index.html#projects" class="nav-link">Projects</a></li>
+        <li><a href="index.html#blog" class="nav-link active">Blog</a></li>
+        <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+        <li><a href="resume.pdf" class="nav-link resume-btn">Resume</a></li>
+      </ul>
+      <div class="hamburger" onclick="document.querySelector('.nav-menu').classList.toggle('active')">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="section-title" style="padding-top:120px;">
+    <div class="container">
+      <h1 style="font-size: clamp(1.6rem,4vw,2.4rem); margin-bottom:0.5rem;">Modern Web Development Guide</h1>
+      <p style="color:var(--text-secondary); margin-top:0.25rem;">Published on Jan 5, 2025 &nbsp;|&nbsp; Category: Web Development</p>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <section class="blog" style="padding-top:1rem; padding-bottom:2rem;">
+    <div class="container">
+      <div class="blog-detail" style="background:var(--bg-glass); border:var(--border-glass); border-radius:16px; padding:2rem; backdrop-filter: blur(20px);">
+        <img src="images/webdev-cover.jpg" alt="Web Development Essentials" class="blog-cover" style="width:100%; max-height:400px; object-fit:cover; border-radius:12px; margin-bottom:1.5rem;">
+
+        <article>
+          <h2 style="color:var(--accent-primary); margin-bottom:0.75rem;">Introduction</h2>
+          <p style="color:var(--text-secondary); margin-bottom:1rem;">
+            Web development spans frontend, backend, and deployment — each layer has its own craft. In this guide I share
+            how I built modern web apps: the tools I chose, why I chose them, architectural patterns, and deployment strategies.
+          </p>
+
+          <h2 style="color:var(--accent-primary); margin-bottom:0.75rem;">Frontend: The User Experience</h2>
+          <p style="color:var(--text-secondary); margin-bottom:1rem;">
+            Core skills: HTML, CSS, JavaScript. Then frameworks like React for component-driven UIs. Accessibility, responsive
+            design and performance matter — fast first paint and smooth interactions create trust.
+          </p>
+
+          <h3 style="color:var(--accent-primary); margin-bottom:0.5rem;">Tools & Workflow</h3>
+          <ul style="color:var(--text-secondary); line-height:1.8; margin-bottom:1rem;">
+            <li>Package managers: npm or yarn</li>
+            <li>Bundlers and build tools: Vite, Webpack (Vite for dev speed)</li>
+            <li>State management options: Context API, Redux, Zustand depending on app size</li>
+            <li>Styling: CSS Modules, Tailwind, or component libraries — choose one consistent approach</li>
+          </ul>
+
+          <h2 style="color:var(--accent-primary); margin-bottom:0.75rem;">Backend: Servers & APIs</h2>
+          <p style="color:var(--text-secondary); margin-bottom:1rem;">
+            Backend responsibilities: business logic, authentication, data access. I prefer Node.js (Express/Nest) or Java (Spring)
+            for strong typing & scaling. Use REST or GraphQL depending on client requirements.
+          </p>
+
+          <details style="margin-bottom:1rem;">
+            <summary style="cursor:pointer; color:var(--accent-primary);">Sample API Endpoint (Express)</summary>
+            <pre style="background:#071018; color:#dff7ff; padding:1rem; border-radius:8px; overflow:auto; margin-top:0.5rem;"><code>
+app.get('/api/users/:id', async (req, res) => {
+  const id = req.params.id;
+  const user = await db.query('SELECT * FROM users WHERE id=$1', [id]);
+  if (!user) return res.status(404).json({ message: 'Not found' });
+  res.json(user);
+});
+            </code></pre>
+          </details>
+
+          <h2 style="color:var(--accent-primary); margin-bottom:0.75rem;">Databases & Persistence</h2>
+          <p style="color:var(--text-secondary); margin-bottom:1rem;">
+            Choose the right DB: relational for transactions & joins (Postgres), NoSQL for flexible documents (MongoDB).
+            Keep schema design and query performance in mind. Use migrations and seed scripts for consistent environments.
+          </p>
+
+          <h2 style="color:var(--accent-primary); margin-bottom:0.75rem;">Testing & CI/CD</h2>
+          <p style="color:var(--text-secondary); margin-bottom:1rem;">
+            Tests protect changes: unit tests for functions, integration tests for API contracts, E2E for user flows.
+            Automate builds and deploy pipelines using GitHub Actions, GitLab CI, or similar.
+          </p>
+
+          <h2 style="color:var(--accent-primary); margin-bottom:0.75rem;">Deployment & Hosting</h2>
+          <p style="color:var(--text-secondary); margin-bottom:1rem;">
+            Options: Vercel/Netlify for static & serverless, Docker + Kubernetes for larger deployments, or managed services
+            like AWS Elastic Beanstalk when starting out. Monitor with logs & metrics (Prometheus, Grafana, Sentry).
+          </p>
+
+          <h2 style="color:var(--accent-primary); margin-bottom:0.75rem;">Performance & Accessibility</h2>
+          <p style="color:var(--text-secondary); margin-bottom:1rem;">
+            Optimize images, use code-splitting, avoid heavy synchronous scripts on first paint. Follow WCAG basics:
+            semantic HTML, proper labels, keyboard navigation.
+          </p>
+
+          <h2 style="color:var(--accent-primary); margin-bottom:0.75rem;">My Projects & Learnings</h2>
+          <p style="color:var(--text-secondary); margin-bottom:1rem;">
+            Building small products — a courses catalog, ecommerce demos, and dashboards — helped me connect pieces:
+            frontend patterns, API design, and deployment. Each project taught debugging, testing, and how to handle real users.
+          </p>
+
+          <h2 style="color:var(--accent-primary); margin-bottom:0.75rem;">Practical Checklist</h2>
+          <ul style="color:var(--text-secondary); line-height:1.8;">
+            <li>Set up ESLint & Prettier</li>
+            <li>Use environment variables for secrets</li>
+            <li>Automate builds & tests on PRs</li>
+            <li>Measure performance before optimizing</li>
+          </ul>
+
+          <h2 style="color:var(--accent-primary); margin-bottom:0.75rem;">Final Thoughts</h2>
+          <p style="color:var(--text-secondary); margin-bottom:1rem;">
+            Web development is about building useful, maintainable experiences. Focus on fundamentals, then learn tools
+            that scale with you. Ship early and iterate.
+          </p>
+
+          <p style="margin-top:1.5rem;">
+            <a href="index.html#blog" class="blog-link">← Back to Blogs</a>
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-text">
+          <p>&copy; 2025 Nanda Sai Sarath. All rights reserved.</p>
+        </div>
+        <div class="footer-links">
+          <a href="#" class="footer-link"><i class="fab fa-github"></i></a>
+          <a href="#" class="footer-link"><i class="fab fa-linkedin"></i></a>
+          <a href="#" class="footer-link"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

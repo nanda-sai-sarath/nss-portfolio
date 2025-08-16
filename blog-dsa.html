@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mastering Data Structures & Algorithms — Nanda Sai Sarath</title>
+  <meta name="description" content="Deep dive into Data Structures & Algorithms: summary, learning path, hands-on projects, and personal experience." />
+  <link rel="stylesheet" href="../styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <!-- Navigation (same as index) -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <span class="logo-text">NSS</span>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="index.html#home" class="nav-link">Home</a></li>
+        <li><a href="index.html#about" class="nav-link">About</a></li>
+        <li><a href="index.html#projects" class="nav-link">Projects</a></li>
+        <li><a href="index.html#blog" class="nav-link active">Blog</a></li>
+        <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+        <li><a href="resume.pdf" class="nav-link resume-btn">Resume</a></li>
+      </ul>
+      <div class="hamburger" onclick="document.querySelector('.nav-menu').classList.toggle('active')">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Blog Header -->
+  <header class="section-title" style="padding-top:120px;">
+    <div class="container">
+      <h1 style="font-size: clamp(1.6rem,4vw,2.4rem); margin-bottom:0.5rem;">Mastering Data Structures & Algorithms</h1>
+      <p style="color:var(--text-secondary); margin-top:0.25rem;">Published on Jan 15, 2025 &nbsp;|&nbsp; Category: DSA</p>
+    </div>
+  </header>
+
+  <!-- Cover Image -->
+  <section class="blog" style="padding-top:1rem; padding-bottom:2rem;">
+    <div class="container">
+      <div class="blog-detail" style="background:var(--bg-glass); border:var(--border-glass); border-radius:16px; padding:2rem; backdrop-filter: blur(20px);">
+        <img src="images/dsa-cover.jpg" alt="Data Structures and Algorithms" class="blog-cover" style="width:100%; max-height:400px; object-fit:cover; border-radius:12px; margin-bottom:1.5rem;">
+
+        <article>
+          <h2 style="color:var(--accent-primary); margin-bottom:0.75rem;">Summary</h2>
+          <p class="blog-excerpt" style="color:var(--text-secondary); margin-bottom:1rem;">
+            Data Structures & Algorithms (DSA) form the backbone of efficient software. In this article I summarise the
+            core concepts — arrays, linked lists, stacks, queues, trees, graphs, hashing, and algorithms like sorting,
+            searching, recursion, greedy methods, divide & conquer, dynamic programming, and graph traversal.
+            I'll explain why each topic matters, how they connect to real systems, and how I approached learning them.
+          </p>
+
+          <h2 style="color:var(--accent-primary); margin-bottom:0.75rem;">Why DSA Matters</h2>
+          <p style="color:var(--text-secondary); margin-bottom:1rem;">
+            Efficient DSA choices reduce memory footprint and runtime. Whether building an API, designing a recommendation
+            engine, or optimizing database queries, picking the right structure and algorithm is crucial. Interviews and
+            competitive programming also rely on strong DSA foundations, which makes DSA a practical and career-critical skill.
+          </p>
+
+          <h2 style="color:var(--accent-primary); margin-bottom:0.75rem;">My Learning Path — step by step</h2>
+          <ol style="color:var(--text-secondary); margin-bottom:1rem; line-height:1.8;">
+            <li><strong>Basics:</strong> arrays, strings, and basic operations — indexing, slicing, iteration.</li>
+            <li><strong>Linear structures:</strong> linked lists, stacks, queues — understanding pointers/references and memory model.</li>
+            <li><strong>Trees:</strong> binary trees, BSTs, tree traversals (inorder/preorder/postorder), and recursion patterns.</li>
+            <li><strong>Graphs:</strong> adjacency lists/matrices, BFS, DFS, shortest paths (Dijkstra), and topological sorting.</li>
+            <li><strong>Hashing:</strong> hash maps, collision resolution, sets, and performance considerations.</li>
+            <li><strong>Algorithms:</strong> sorting (merge/quick/heap), searching (binary search), greedy, divide & conquer, DP.</li>
+            <li><strong>Practice:</strong> problem solving on platforms, building small projects to apply concepts.</li>
+          </ol>
+
+          <h2 style="color:var(--accent-primary); margin-bottom:0.75rem;">Hands-on Projects & Exercises</h2>
+          <p style="color:var(--text-secondary); margin-bottom:1rem;">
+            To internalize DSA I mixed focused practice with small projects:
+          </p>
+          <ul style="color:var(--text-secondary); margin-bottom:1rem; line-height:1.8;">
+            <li><strong>Custom memory pool:</strong> implemented a simple allocator to understand pointers & fragmentation.</li>
+            <li><strong>Graph-based route finder:</strong> used adjacency lists + Dijkstra to find shortest path between nodes.</li>
+            <li><strong>LRU cache:</strong> implemented using a hash map + doubly linked list to learn O(1) operations.</li>
+            <li><strong>Competitive practice:</strong> solved progressive problems on LeetCode/HackerRank — starting easy → medium → hard.</li>
+          </ul>
+
+          <h2 style="color:var(--accent-primary); margin-bottom:0.75rem;">Key Patterns & Tricks I Use</h2>
+          <p style="color:var(--text-secondary); margin-bottom:1rem;">
+            Over time I recognized recurring patterns in problems that made solutions easier:
+          </p>
+          <ul style="color:var(--text-secondary); margin-bottom:1rem; line-height:1.8;">
+            <li><strong>Two pointers:</strong> for sorted arrays and window problems.</li>
+            <li><strong>Sliding window:</strong> efficient range problems without nested loops.</li>
+            <li><strong>Divide & conquer:</strong> split problems into independent subproblems (e.g. merge sort).</li>
+            <li><strong>Memoization:</strong> top-down DP to avoid recomputation.</li>
+            <li><strong>Graph layering:</strong> converting problems into graph terms to use BFS/DFS.</li>
+          </ul>
+
+          <h2 style="color:var(--accent-primary); margin-bottom:0.75rem;">Small Code Examples</h2>
+          <p style="color:var(--text-secondary); margin-bottom:0.5rem;">Here are short examples to capture the flavor — language-agnostic pseudocode & Java snippets are shown.</p>
+
+          <details style="margin-bottom:1rem;">
+            <summary style="cursor:pointer; color:var(--accent-primary);">1) Binary Search (Java)</summary>
+            <pre style="background:#071018; color:#dff7ff; padding:1rem; border-radius:8px; overflow:auto; margin-top:0.5rem;"><code>
+                public static int binarySearch(int[] arr, int target) {
+                    int l = 0, r = arr.length - 1;
+                    while (l <= r) {
+                        int mid = l + (r - l) / 2;
+                        if (arr[mid] == target) return mid;
+                        if (arr[mid] < target) l = mid + 1;
+                        else r = mid - 1;
+                    }
+                    return -1;
+                }
+            </code></pre>
+          </details>
+
+          <details style="margin-bottom:1rem;">
+            <summary style="cursor:pointer; color:var(--accent-primary);">2) DFS (Iterative)</summary>
+            <pre style="background:#071018; color:#dff7ff; padding:1rem; border-radius:8px; overflow:auto; margin-top:0.5rem;"><code>
+                void dfsIterative(int start, List<Integer>[] graph) {
+                    boolean[] visited = new boolean[graph.length];
+                    Stack<Integer> st = new Stack<>();
+                    st.push(start);
+                    while (!st.isEmpty()) {
+                        int node = st.pop();
+                        if (visited[node]) continue;
+                        visited[node] = true;
+                        // process node
+                        for (int nei : graph[node]) {
+                            if (!visited[nei]) st.push(nei);
+                        }
+                    }
+                }
+            </code></pre>
+          </details>
+
+          <h2 style="color:var(--accent-primary); margin-bottom:0.75rem;">How I Studied — practical tips</h2>
+          <ol style="color:var(--text-secondary); line-height:1.8;">
+            <li><strong>Small daily goals:</strong> 1–2 problems every day rather than binging.</li>
+            <li><strong>Understand not memorize:</strong> focus on why a structure or algorithm works.</li>
+            <li><strong>Explain aloud:</strong> teach others or write blog posts — it deepens retention.</li>
+            <li><strong>Use visual tools:</strong> tree/graph visualizers help conceptualize traversal and mutations.</li>
+            <li><strong>Time yourself:</strong> once comfortable, simulate interview conditions to build speed and clarity.</li>
+          </ol>
+
+          <h2 style="color:var(--accent-primary); margin-bottom:0.75rem;">Resources I Used</h2>
+          <ul style="color:var(--text-secondary); line-height:1.8;">
+            <li>Problem sites: LeetCode, HackerRank, Codeforces</li>
+            <li>Books: <em>Introduction to Algorithms (CLRS)</em> — for theoretical depth</li>
+            <li>Interactive: visualgo.net for visualising structures & algorithms</li>
+            <li>Community: reading high-rated solutions & editorials to learn patterns</li>
+          </ul>
+
+          <h2 style="color:var(--accent-primary); margin-bottom:0.75rem;">My Experience — reflection</h2>
+          <p style="color:var(--text-secondary); margin-bottom:1rem;">
+            DSA shifted my mindset from "make it work" to "make it efficient". Early setbacks taught me to break problems
+            down and iterate. I saw immediate wins — code that used half the memory or finished orders of magnitude faster.
+            That payoff kept me motivated.
+          </p>
+
+          <h2 style="color:var(--accent-primary); margin-bottom:0.75rem;">Final Notes</h2>
+          <p style="color:var(--text-secondary); margin-bottom:1rem;">
+            If you are starting, pick one topic, practice intentionally, and build small projects around it. DSA is a long-term
+            investment that compounds over time — the more building blocks you internalize, the more creative and optimized your
+            solutions will become.
+          </p>
+
+          <p style="margin-top:1.5rem;">
+            <a href="index.html#blog" class="blog-link">← Back to Blogs</a>
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer (same as index) -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-text">
+          <p>&copy; 2025 Nanda Sai Sarath. All rights reserved.</p>
+        </div>
+        <div class="footer-links">
+          <a href="#" class="footer-link"><i class="fab fa-github"></i></a>
+          <a href="#" class="footer-link"><i class="fab fa-linkedin"></i></a>
+          <a href="#" class="footer-link"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

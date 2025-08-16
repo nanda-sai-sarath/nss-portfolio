@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SQL Essentials: From Basics to Advanced — Nanda Sai Sarath</title>
+  <meta name="description" content="Comprehensive guide to SQL: core concepts, queries, indexing, optimization and my learning experience." />
+  <link rel="stylesheet" href="../styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <span class="logo-text">NSS</span>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="index.html#home" class="nav-link">Home</a></li>
+        <li><a href="index.html#about" class="nav-link">About</a></li>
+        <li><a href="index.html#projects" class="nav-link">Projects</a></li>
+        <li><a href="index.html#blog" class="nav-link active">Blog</a></li>
+        <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+        <li><a href="resume.pdf" class="nav-link resume-btn">Resume</a></li>
+      </ul>
+      <div class="hamburger" onclick="document.querySelector('.nav-menu').classList.toggle('active')">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="section-title" style="padding-top:120px;">
+    <div class="container">
+      <h1 style="font-size: clamp(1.6rem,4vw,2.4rem); margin-bottom:0.5rem;">SQL Essentials: From Basics to Advanced</h1>
+      <p style="color:var(--text-secondary); margin-top:0.25rem;">Published on Jan 10, 2025 &nbsp;|&nbsp; Category: SQL</p>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <section class="blog" style="padding-top:1rem; padding-bottom:2rem;">
+    <div class="container">
+      <div class="blog-detail" style="background:var(--bg-glass); border:var(--border-glass); border-radius:16px; padding:2rem; backdrop-filter: blur(20px);">
+        <img src="images/sql-cover.jpg" alt="SQL Essentials" class="blog-cover" style="width:100%; max-height:400px; object-fit:cover; border-radius:12px; margin-bottom:1.5rem;">
+
+        <article>
+          <h2 style="color:var(--accent-primary); margin-bottom:0.75rem;">Overview</h2>
+          <p style="color:var(--text-secondary); margin-bottom:1rem;">
+            SQL is the language of relational databases — selecting, filtering, joining, grouping and transforming data.
+            In this post I cover core query constructs, schema design, indexing basics, transactions, and optimization heuristics
+            that I found essential while building data-driven applications.
+          </p>
+
+          <h2 style="color:var(--accent-primary); margin-bottom:0.75rem;">Core Concepts</h2>
+          <dl style="color:var(--text-secondary); margin-bottom:1rem; line-height:1.8;">
+            <dt><strong>Tables & Schemas</strong></dt>
+            <dd>Rows and columns model entities; normalization reduces redundancy while denormalization can improve read performance.</dd>
+
+            <dt><strong>Primary & Foreign Keys</strong></dt>
+            <dd>Primary keys uniquely identify rows. Foreign keys represent relationships — essential for joins and referential integrity.</dd>
+
+            <dt><strong>Indexes</strong></dt>
+            <dd>Indexing speeds lookups but adds write cost and storage overhead. Choose indexes on frequently filtered/sorted columns.</dd>
+
+            <dt><strong>Transactions & ACID</strong></dt>
+            <dd>Transactions ensure atomicity and consistency. Understanding isolation levels helps prevent race conditions and read anomalies.</dd>
+          </dl>
+
+          <h2 style="color:var(--accent-primary); margin-bottom:0.75rem;">Common Queries & Patterns</h2>
+          <p style="color:var(--text-secondary); margin-bottom:1rem;">
+            Below are practical query patterns I used frequently.
+          </p>
+
+          <details style="margin-bottom:1rem;">
+            <summary style="cursor:pointer; color:var(--accent-primary);">1) Basic SELECT with JOIN</summary>
+            <pre style="background:#071018; color:#dff7ff; padding:1rem; border-radius:8px; overflow:auto; margin-top:0.5rem;"><code>
+SELECT u.id, u.name, o.order_count
+FROM users u
+LEFT JOIN (
+  SELECT user_id, COUNT(*) AS order_count
+  FROM orders
+  GROUP BY user_id
+) o ON u.id = o.user_id
+WHERE u.is_active = TRUE;
+            </code></pre>
+          </details>
+
+          <details style="margin-bottom:1rem;">
+            <summary style="cursor:pointer; color:var(--accent-primary);">2) Window Functions (ranking)</summary>
+            <pre style="background:#071018; color:#dff7ff; padding:1rem; border-radius:8px; overflow:auto; margin-top:0.5rem;"><code>
+SELECT user_id, purchase_amount,
+       RANK() OVER (PARTITION BY user_id ORDER BY purchase_amount DESC) AS rnk
+FROM purchases;
+            </code></pre>
+          </details>
+
+          <h2 style="color:var(--accent-primary); margin-bottom:0.75rem;">Schema Design: Lessons</h2>
+          <p style="color:var(--text-secondary); margin-bottom:1rem;">
+            I learned schema design by building sample apps: start normalized, then denormalize only when performance dictates.
+            Maintain good naming conventions, use surrogate keys where appropriate, and document relationships clearly.
+          </p>
+
+          <h2 style="color:var(--accent-primary); margin-bottom:0.75rem;">Indexing & Performance</h2>
+          <p style="color:var(--text-secondary); margin-bottom:1rem;">
+            Index selectively — high-cardinality columns used for filtering or ordering are good candidates. Use EXPLAIN/EXPLAIN ANALYZE
+            to inspect query plans. Beware of full-table scans caused by functions on indexed columns or poor join orders.
+          </p>
+
+          <h2 style="color:var(--accent-primary); margin-bottom:0.75rem;">Transactions & Concurrency</h2>
+          <p style="color:var(--text-secondary); margin-bottom:1rem;">
+            Doing concurrency correctly saved me from subtle bugs. Use short transactions, avoid user prompts inside transactions,
+            and choose suitable isolation levels for your use case.
+          </p>
+
+          <h2 style="color:var(--accent-primary); margin-bottom:0.75rem;">Real Project Example</h2>
+          <p style="color:var(--text-secondary); margin-bottom:1rem;">
+            In a project that tracked user events, I initially stored every event row in a single table — reads became slow.
+            Solution: moved to partitioned tables by month and added composite indexes on (user_id, event_time) — read latency improved
+            drastically while write performance remained acceptable.
+          </p>
+
+          <h2 style="color:var(--accent-primary); margin-bottom:0.75rem;">Practical Tips</h2>
+          <ul style="color:var(--text-secondary); line-height:1.8;">
+            <li>Prefer explicit column lists in SELECT rather than `*` for stable queries.</li>
+            <li>Use LIMIT for pagination and OFFSET carefully — keyset pagination is often superior for large datasets.</li>
+            <li>Back up and test schema migrations locally before running in production.</li>
+          </ul>
+
+          <h2 style="color:var(--accent-primary); margin-bottom:0.75rem;">Resources</h2>
+          <ul style="color:var(--text-secondary); line-height:1.8;">
+            <li>Official docs for Postgres / MySQL</li>
+            <li>Use `EXPLAIN` to read query plans</li>
+            <li>Articles on indexing strategies & partitioning</li>
+          </ul>
+
+          <h2 style="color:var(--accent-primary); margin-bottom:0.75rem;">My Learning Experience</h2>
+          <p style="color:var(--text-secondary); margin-bottom:1rem;">
+            Learning SQL enhanced how I design systems. Debugging slow queries taught me to think like the database engine —
+            reducing table scans, streamlining joins, and thinking about index selectivity became routine in my development flow.
+          </p>
+
+          <p style="margin-top:1.5rem;">
+            <a href="index.html#blog" class="blog-link">← Back to Blogs</a>
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-text">
+          <p>&copy; 2025 Nanda Sai Sarath. All rights reserved.</p>
+        </div>
+        <div class="footer-links">
+          <a href="#" class="footer-link"><i class="fab fa-github"></i></a>
+          <a href="#" class="footer-link"><i class="fab fa-linkedin"></i></a>
+          <a href="#" class="footer-link"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
